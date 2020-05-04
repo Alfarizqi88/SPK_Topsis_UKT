@@ -17,7 +17,7 @@ include("koneksi.php");
     <link href="tampilan/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles/slider.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body>
+  <body class="font">
     <!--menu-->
     <nav class="active ">
       <div class="container">
@@ -50,7 +50,7 @@ include("koneksi.php");
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading text-center">
-              Nilai Matriks
+              <h5><b>Nilai Matriks</b></h5>
             </div>
 
             <div class="panel-body">

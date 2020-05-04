@@ -24,7 +24,7 @@ while ($row = $alternatif->fetch_row())
     <link href="tampilan/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles/slider.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body>
+  <body class="font">
     <!--menu-->
     <nav class="active ">
       <div class="container">

@@ -34,7 +34,7 @@ if ($datakode) {
     <link href="tampilan/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="styles/slider.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body>
+  <body class="font">
     <!--menu-->
     <nav class="active ">
       <div class="container">
