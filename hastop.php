@@ -181,8 +181,143 @@ $jml_kriteria =count($kriteria);
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-15 col-lg-offset-0">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Rating Bobot Ternormalisasi(y<sub>ij</sub>)
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th rowspan='3'>No</th>
+                    <th rowspan='3'>Alternatif</th>
+                    <th rowspan='3'>Nama</th>
+                    <th colspan='<?php echo $jml_kriteria;?>'>Kriteria</th>
+                  </tr>
+                  <tr>
+                    <?php
+                    foreach($kriteria as $k)
+                      echo "<th>$k</th>\n";
+                    ?>
+                  </tr>
+                  <tr>
+                    <?php
+                    for($n=1;$n<=$jml_kriteria;$n++)
+                      echo "<th>C$n</th>";
+                    ?>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $i=0;
+                  $y=array();
+                  foreach($data as $nama=>$krit){
+                    echo "<tr>
+                      <td>".(++$i)."</td>
+                      <th>A{$i}</th>
+                      <td>{$nama}</td>";
+                    foreach($kriteria as $k){
+                      $y[$k][$i-1]=round(($krit[$k]/sqrt($nilai_kuadrat[$k])),10)*$bobot[$k];
+                      echo "<td align='center'>".$y[$k][$i-1]."</td>";
+                    }
+                    echo
+                     "</tr>\n";
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Solusi Ideal positif (A<sup>+</sup>)
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th colspan='<?php echo $jml_kriteria;?>'>Kriteria</th>
+                  </tr>
+                  <tr>
+                    <?php
+                    foreach($kriteria as $k)
+                      echo "<th>$k</th>\n";
+                    ?>
+                  </tr>
+                  <tr>
+                    <?php
+                    for($n=1;$n<=$jml_kriteria;$n++)
+                      echo "<th>y<sub>{$n}</sub><sup>+</sup></th>";
+                    ?>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <?php
+                    $yplus=array();
+                    foreach($kriteria as $k){
+                      $yplus[$k]=($status[$k]=='Benefit'?max($y[$k]):min($y[$k]));
+                    
+                      echo "<th>$yplus[$k]</th>";
 
-      
+                    }
+                    ?>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Solusi Ideal negatif (A<sup>-</sup>)
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th colspan='<?php echo $jml_kriteria;?>'>Kriteria</th>
+                  </tr>
+                  <tr>
+                    <?php
+                    foreach($kriteria as $k)
+                      echo "<th>{$k}</th>\n";
+                    ?>
+                  </tr>
+                  <tr>
+                    <?php
+                    for($n=1;$n<=$jml_kriteria;$n++)
+                      echo "<th>y<sub>{$n}</sub><sup>-</sup></th>";
+                    ?>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <?php
+                    $ymin=array();
+                    foreach($kriteria as $k){
+                      $ymin[$k]=($status[$k]=='Cost'?max($y[$k]):min($y[$k]));
+                      echo "<th>{$ymin[$k]}</th>";
+                    }
+
+                    ?>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div> <!--container-->
 
     
