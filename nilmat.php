@@ -19,7 +19,7 @@ include("koneksi.php");
   </head>
   <body>
     <!--menu-->
-    <nav class="active bg-success">
+    <nav class="active ">
       <div class="container">
         <div class="navbar-header ">
           
@@ -28,16 +28,16 @@ include("koneksi.php");
         <div class="">
           <ul class="nav navbar-nav navbar-right" >
             <li>
-              <a href="kriteria.php">Kriteria</a>
+              <a href="kriteria.php" class="text-dark">Kriteria</a>
             </li>
             <li>
-              <a href="alternatif.php">Alternatif</a>
+              <a href="alternatif.php" class="text-dark">Alternatif</a>
             </li>
             <li>
-              <a href="nilmat.php">Nilai Matriks</a>
+              <a href="nilmat.php" class="text-dark">Nilai Matriks</a>
             </li>
             <li>
-              <a href="hastop.php">Hasil Topsis</a>
+              <a href="hastop.php" class="text-dark">Hasil Topsis</a>
             </li>
           </ul>
         </div>
@@ -102,7 +102,7 @@ include("koneksi.php");
                                 <option value="5">5</option>
                               </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" align="center">
                               <button type="submit" class="btn btn-success">Proses</button>
                             </div>
                           </form>

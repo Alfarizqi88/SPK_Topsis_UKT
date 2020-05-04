@@ -28,7 +28,7 @@ while ($row = $kriteria->fetch_row())
   </head>
   <body>
     <!--menu-->
-    <nav class="active bg-success">
+    <nav class="active ">
       <div class="container">
         <div class="navbar-header ">
           <a class="navbar-brand" href="index.php">SPK METODE TOPSIS</a>
