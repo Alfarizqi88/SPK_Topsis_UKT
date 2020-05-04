@@ -438,6 +438,73 @@ $jml_kriteria =count($kriteria);
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Ranking Hasil Topsis
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Alternatif</th>
+                    <th>Nama</th>
+                    <th>V<sub>i</sub></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $i=0;                    
+                    $V=array();
+                    $Y=array();
+                    $Z=array();                        
+                    $hasilakhir=array();
+                    $alter_alt = array();
+                    $nama_alt = array();
+                    $vi = array();
+                    foreach ($data as $nama => $krit) {
+                      $i = $i +1;
+                      array_push($nama_alt,$nama);
+                      $n = "A" . $i;
+                      array_push($alter_alt,$n);  
+                      foreach($kriteria as $k){
+                        $V[$i-1]=round(sqrt($dmin[$i-1]),10)/(round(sqrt($dmin[$i-1]),10)+round(sqrt($dplus[$i-1]),10));
+                      }
+                    }
+                    $tampung = array();
+                    $vi = $V;
+                    $length = count($alter_alt);
+                    for ($i=0; $i < $length; $i++) { 
+                      array_push($tampung,array($alter_alt[$i],$nama_alt[$i],$vi[$i]));
+                    }
+                    array_multisort(array_map(function($element){
+                       return $element[2];
+                     }, $tampung),SORT_DESC, $tampung);
+                    $pj = count($tampung);
+                    $no = 0;
+                    for ($i=0; $i < $pj; $i++) { 
+                      $no = $i + 1;
+                      $alter = $tampung[$i][0];
+                      $nama = $tampung[$i][1];
+                      $res = $tampung[$i][2];
+                      ?>
+                      <tr>
+                      <td><?php echo $no?></td>
+                      <td><b><?php echo $alter?></b></td>
+                      <td><?php echo $nama?></td>
+                      <td><?php echo $res?></td> 
+                      </tr>
+                      <?php } ?> 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div> <!--container-->
 
     
